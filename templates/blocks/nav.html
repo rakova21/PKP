@@ -1,0 +1,53 @@
+<nav th:fragment="nav" class="navbar navbar-light navbar-expand-lg clean-navbar" style="background-color: #717bb8">
+    <div class="container">
+        <a class="navbar-brand logo text-white" href="/">CrewRisk</a>
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+            <span class="visually-hidden">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav ms-auto align-items-center text-center">
+
+                <li th:if="${role == 'EMPLOYEE' and question == true}" class="nav-item"><a class="nav-link text-white" href="/question">Опрос</a></li>
+                <li th:if="${role == 'EMPLOYEE' and certification == true}" class="nav-item"><a class="nav-link text-white" href="/certification">Аттестация</a></li>
+                <li th:if="${role == 'EMPLOYEE' or role == 'USER'}" class="nav-item"><a class="nav-link text-white" href="/notification">Оповещения</a></li>
+
+                <li th:if="${role != 'NOT'}" class="nav-item"><a class="nav-link text-white" href="/profile">Мой профиль</a></li>
+                <li th:if="${role != 'NOT'}" class="nav-item"><a class="nav-link text-white" href="/jobs">Вакансии</a></li>
+                <li th:if="${role == 'ADMIN' or role == 'MANAGER' or role == 'EMPLOYEE'}" class="nav-item"><a class="nav-link text-white" href="/events">Мероприятия</a></li>
+
+                <li class="nav-item"><a class="nav-link text-white" href="/about">Наша компания</a></li>
+
+                <li th:if="${role != 'NOT'}" class="nav-item"><a class="nav-link text-white" href="/reviews">Обсуждение вакансий</a></li>
+                <li th:if="${role != 'NOT'}" class="nav-item"><a class="nav-link text-white" href="/apps">Задать вопрос</a></li>
+
+                <li th:if="${role == 'MANAGER'}" class="nav-item">
+                    <div class="nav-item dropdown" style="padding: 8px 16px;">
+                        <a class="dropdown-toggle btn btn-primary" aria-expanded="false" data-bs-toggle="dropdown" href="#">Вкладки</a>
+                        <div class="dropdown-menu">
+                            <a class="nav-link" href="/humans/add">Добавить сотрудника</a>
+                            <a class="nav-link" href="/vacancy">Заявки</a>
+                            <a class="nav-link" href="/offers">Предложения</a>
+                            <a class="nav-link" href="/humans">База</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li th:if="${role == 'ADMIN'}" class="nav-item">
+                    <div class="nav-item dropdown" style="padding: 8px 16px;">
+                        <a class="dropdown-toggle btn btn-primary" aria-expanded="false" data-bs-toggle="dropdown" href="#">Вкладки</a>
+                        <div class="dropdown-menu">
+                            <a class="nav-link" href="/users">База компании</a>
+                            <a class="nav-link" href="/statistics">Аналитика</a>
+                            <a class="nav-link" href="/humans">База</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li th:if="${role == 'NOT'}" class="nav-item"><a class="nav-link text-white" href="/login">Вход</a></li>
+                <li th:if="${role == 'NOT'}" class="nav-item"><a class="nav-link text-white" href="/reg">Регистрация</a></li>
+                <li th:if="${role != 'NOT'}" class="nav-item"><a class="nav-link text-white" href="/logout">Выход</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

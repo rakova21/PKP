@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Аналитика</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+<div th:insert="blocks/nav :: nav"></div>
+<main class="page product-page">
+    <section class="clean-block clean-product">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Аналитика</h2>
+            </div>
+            <div class="block-content">
+                <div class="text-center">
+                <button class="btn btn-primary w-25 mb-2" onclick="generatePDF()">Генерация PDF</button>
+                </div>
+                <div id="generatePDF">
+                    <p class="lead" th:text="${'Средний стаж сотрудников: ' + medExp}"></p>
+                    <p class="lead" th:text="${'Меньше среднего: ' + medExpMin}"></p>
+                    <p class="lead" th:text="${'Больше среднего: ' + medExpMax}"></p>
+                    <p class="lead" th:text="${'Количество сотрудников: ' + userSize}"></p>
+                    <p class="lead" th:text="${'Количество сотрудников со средним образованием: ' + mid}"></p>
+                    <p class="lead" th:text="${'Количество сотрудников с высшим образованием: ' + high}"></p>
+                    <div class="row">
+                        <div class="col">
+                            <p class="lead">Семейное положение</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div th:each="i : ${maritals}" class="col-auto">
+                            <p th:text="${i.getKey() + ' - ' + i.getValue()}"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><p class="lead">Место рождения</p></div>
+                    </div>
+                    <div class="row">
+                        <div th:each="i : ${origins}" class="col-auto">
+                            <p th:text="${i.getKey() + ' - ' + i.getValue()}"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><p class="lead">Гражданство</p></div>
+                    </div>
+                    <div class="row">
+                        <div th:each="i : ${citizenships}" class="col-auto">
+                            <p th:text="${i.getKey() + ' - ' + i.getValue()}"></p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div id="drawCertification" style="width: 100%; height: 500px;"></div>
+                <hr>
+                <div id="topQuantity" style="width: 100%; height: 500px;"></div>
+                <hr>
+                <div id="drawEducation" style="width: 100%; height: 500px;"></div>
+                <hr>
+                <div id="topExp" style="width: 100%; height: 500px;"></div>
+                <hr>
+                <div id="drawMedExp" style="width: 100%; height: 500px;"></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script th:inline="javascript" type="text/javascript">
+    var topQuantityName = /*[[${topQuantityName}]]*/ [];
+    var topQuantityNumber = /*[[${topQuantityNumber}]]*/ [];
+    var expString = /*[[${expString}]]*/ [];
+    var expInt = /*[[${expInt}]]*/ [];
+    var mid = /*[[${mid}]]*/ 0;
+    var high = /*[[${high}]]*/ 0;
+    var medExpMin = /*[[${medExpMin}]]*/ 0;
+    var medExpMax = /*[[${medExpMax}]]*/ 0;
+    var minCertification = /*[[${minCertification}]]*/ 0;
+    var medCertification = /*[[${medCertification}]]*/ 0;
+    var maxCertification = /*[[${maxCertification}]]*/ 0;
+
+    function generatePDF() {
+        html2pdf(document.getElementById('generatePDF'));
+    }
+</script>
+<script src="/js/stats.js"></script>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+</body>
+
+</html>

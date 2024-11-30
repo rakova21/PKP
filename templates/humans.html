@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>База</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">База</h2>
+            </div>
+            <div class="content rounded-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <form method="get" action="/humans/search">
+                            <div class="filters" style="padding-left: 20px;padding-top: 15px;">
+                                <div class="filter-item">
+                                    <h3>Семейное положение</h3>
+                                    <select class="form-select mb-2" name="marital">
+                                        <option th:each="i : ${maritals}" th:value="${i}" th:label="${i.name}"
+                                                th:selected="${i == marSelect}"></option>
+                                    </select>
+                                    <h3>Место рождения</h3>
+                                    <select class="form-select mb-2" name="origin">
+                                        <option th:each="i : ${origins}" th:value="${i}" th:label="${i.name}"
+                                                th:selected="${i == oriSelect}"></option>
+                                    </select>
+                                    <h3>Гражданство</h3>
+                                    <select class="form-select mb-2" name="citizenship">
+                                        <option th:each="c : ${citizenships}" th:value="${c}" th:label="${c.name}"
+                                                th:selected="${c == citSelect}"></option>
+                                    </select>
+                                </div>
+                                <div class="filter-item">
+                                    <button class="btn btn-primary" type="submit" style="margin-right: 10px;">Найти
+                                    </button>
+                                    <a class="btn btn-secondary" role="button" href="/humans">Сбросить</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-9">
+                        <div class="p-3">
+                            <form action="/humans/filter" method="get">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <a href="/humans" class="btn btn-secondary">Сбросить</a>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" name="fio" class="form-control" required
+                                               placeholder="Введите ФИО" th:value="${fio}">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-primary" type="submit">Поиск</button>
+                                    </div>
+                                </div>
+                                <hr>
+                            </form>
+                        </div>
+                        <div th:each="h : ${humans}" class="row mb-2">
+                                <div class="col-2">
+                                    <a th:href="'/humans/' + ${h.id}">
+                                        <img class="w-100 rounded-circle" th:src="'/img/' + ${h.primarys.photo}">
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <p class="fs-5" th:text="${h.primarys.getFio()}"></p>
+                                    <p class="fs-5" th:text="${h.secondary.post}"></p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

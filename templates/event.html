@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Мероприятия</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Мероприятия</h2>
+            </div>
+
+            <div th:if="${role == 'MANAGER'}" class="content rounded-3 p-3">
+                <form action="/events/add" method="post">
+                    <div class="row">
+                        <div class="col-auto">
+                            <input type="date" required class="form-control" name="date">
+                        </div>
+                        <div class="col">
+                            <input type="text" required class="form-control" name="name" placeholder="Наименование">
+                        </div>
+                        <div class="col-auto">
+                            <select name="status" required class="form-select">
+                                <option th:each="i : ${statuses}" th:value="${i}" th:label="${i.name}"></option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary" type="submit">Добавить</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <form th:each="e : ${events}" th:action="${'/events/' + e.id + '/edit'}" method="post">
+                    <div class="row">
+                        <div>&nbsp;</div>
+                        <div class="col-auto">
+                            <input type="date" required class="form-control" name="date" th:value="${e.date}">
+                        </div>
+                        <div class="col">
+                            <input type="text" required class="form-control" name="name" placeholder="Наименование"
+                                   th:value="${e.name}">
+                        </div>
+                        <div class="col-auto">
+                            <select name="status" required class="form-select">
+                                <option th:each="i : ${statuses}" th:value="${i}" th:label="${i.name}"
+                                        th:selected="${i == e.status}"></option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-info" type="submit">Обновить</button>
+                        </div>
+                        <div class="col-auto">
+                            <a class="btn btn-danger" th:href="${'/events/' + e.id + '/delete'}">Удалить</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div th:if="${role != 'MANAGER'}" class="content rounded-3 p-3">
+                <div th:each="i : ${events}" class="row">
+                    <div class="col-auto">
+                        <p class="fs-4" th:text="${i.date}"></p>
+                    </div>
+                    <div class="col">
+                        <p class="fs-4" th:text="${i.name}"></p>
+                    </div>
+                    <div class="col">
+                        <p class="fs-4" th:text="${'Статус: ' + i.status.name}"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

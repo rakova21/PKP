@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Предложения</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Предложения</h2>
+            </div>
+            <div class="content rounded-3">
+                <div class="row">
+                    <div th:each="i : ${offers}" class="col-3 m-3">
+                        <div class="text-center mb-2">
+                            <img class="rounded-circle" style="max-width: 100%;max-height: 250px"
+                                 th:src="'/img/' + ${i.user.primarys.photo}">
+                        </div>
+                        <p>Статус: <span th:text="${i.status.name}"></span></p>
+                        <p>ФИО: <span th:text="${i.user.primarys.getFio()}"></span></p>
+                        <p>Вакансия: <span th:text="${i.offer}"></span></p>
+                        <a th:unless="${i.user.resume.isEmpty()}" th:href="'/img/' + ${i.user.resume}"
+                           class="btn btn-info w-100 mb-1" target="_blank">Резюме</a>
+                        <a th:href="${'/humans/' + i.user.id}" class="btn btn-info w-100 mb-1" target="_blank">Профиль</a>
+                        <a th:if="${i.status.name() == 'WAITING'}" th:href="${'/offers/' + i.id + '/app'}"
+                           class="btn btn-primary w-100 mb-1">Одобрить</a>
+                        <a th:if="${i.status.name() == 'WAITING'}" th:href="${'/offers/' + i.id + '/reject'}"
+                           class="btn-danger w-100 mb-1">Отклонить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

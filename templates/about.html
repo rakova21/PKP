@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Наша компания</title>
+    <style>
+        .highlight {
+            background-color: rgba(88, 142, 224, 0.23);
+            padding: 0.2em;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Наша компания</h2>
+            </div>
+            <div class="content rounded-3" style="padding: 20px">
+
+
+                <div class="row">
+                    <div class="col-12" align="justify"><p class="lead"><span class="bold">BiTech</span> - <span class="highlight">ведущая IT-компания</span>, основанная в <span class="bold">2015</span> году в <span class="bold">Минске</span>,
+                        столице Беларуси. Группа энтузиастов, увлеченных передовыми технологиями, объединились, чтобы создавать инновационные
+                        программные решения, способные улучшить жизнь людей по всему миру. Специализируясь на разработке высокотехнологичных
+                        программных продуктов, системной интеграции и консалтинге, мы работаем с клиентами из различных отраслей - от финансов
+                        и здравоохранения до промышленности и розничной торговли.</p></div><hr><br>
+                    <div class="col-12" align="justify"><p class="lead">На протяжении своей истории BiTech прошла путь от небольшого стартапа
+                        до быстрорастущей компании с офисами в ключевых технологических центрах, таких как <span class="highlight">Москва, Берлин и Сан-Франциско</span>. Ключом
+                        к нашему успеху стали постоянные инвестиции в исследования и разработки, а также высокая квалификация нашей команды
+                        программистов, разработчиков, аналитиков и менеджеров. Благодаря этому мы смогли разработать ряд революционных решений,
+                        включая платформу для управления большими данными, облачную систему бухгалтерского учета для малого бизнеса и мобильное
+                        приложение для удаленного мониторинга состояния пациентов. Эти разработки получили признание на международном уровне и
+                        принесли нам престижные награды, такие как премия Международной федерации информационных технологий (IFIP) и приз за
+                        лучшее инновационное решение на Всемирном экономическом форуме.</p></div><hr><br>
+                    <div class="col-12" align="justify"><p class="lead">Мы гордимся нашей командой профессионалов, объединенных общей целью -
+                        <span class="highlight">создавать технологии, которые улучшают жизнь людей</span>. Наша корпоративная культура основана на взаимном уважении, открытости
+                        к инновациям и готовности постоянно учиться. Мы регулярно проводим тимбилдинги, обучающие семинары и другие мероприятия,
+                        чтобы укреплять связи между сотрудниками. Если вы разделяете наши ценности и готовы внести свой вклад в наш общий успех,
+                        мы будем рады видеть вас в нашей команде!</p></div>
+
+                </div>
+                <br>
+                <br>
+                <div class="text-center">
+                    <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/yTAQdn29BHU"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/restApi.js"></script>
+
+</body>
+
+</html>

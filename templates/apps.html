@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Задать вопрос</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Задать вопрос</h2>
+            </div>
+            <div class="content rounded-3" style="padding: 20px">
+                <form th:if="${role == 'EMPLOYEE' or role == 'USER'}" action="/apps/add" method="post" class="mb-5">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" name="text" class="form-control" placeholder="Напишите..." required></div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary">Добавить</button>
+                        </div>
+                    </div>
+                </form>
+                <div th:each="i : ${apps}" class="row">
+                    <div class="col">
+                        <p class="lead" th:text="${i.owner.primarys.getFio() + ' | ' + i.date}"></p>
+                    </div>
+                    <div th:if="${role == 'ADMIN'}" class="col-auto">
+                        <a th:href="${'/apps/' + i.id + '/delete'}" class="btn btn-danger">Удалить</a>
+                    </div>
+                    <div class="col-12">
+                        <p th:text="${i.text}"></p>
+                    </div>
+                    <form th:if="${role == 'MANAGER' and i.answers.isEmpty()}"
+                          th:action="${'/apps/' + i.id + '/answer'}" method="post" class="mb-2">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="text" class="form-control" placeholder="Напишите..." required></div>
+                            <div class="col-auto">
+                                <button class="btn btn-primary">Ответить</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div th:unless="${i.answers.isEmpty()}" class="row">
+                        <div class="col">
+                            <p class="lead"
+                               th:text="${i.answers.get(0).owner.role.name + ' | ' + i.answers.get(0).owner.primarys.getFio() + ' | ' + i.answers.get(0).date}"></p>
+                        </div>
+                        <div class="col-12">
+                            <p th:text="${i.answers.get(0).text}"></p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

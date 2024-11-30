@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Заявки кандидатов</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Заявки кандидатов</h2>
+            </div>
+            <div class="content rounded-3">
+                <div class="row">
+                    <div th:each="i : ${vacancies}" class="col-3 p-4">
+                        <div class="text-center">
+                            <img class="rounded-circle" style="max-width: 100%;max-height: 250px"
+                                 th:src="'/img/' + ${i.user.primarys.photo}">
+                        </div>
+                        <p>ФИО: <span th:text="${i.user.primarys.getFio()}"></span></p>
+                        <p>Вакансия: <span th:text="${i.job.name}"></span></p>
+                        <p>Требуемый опыт: <span th:text="${i.job.exp}"></span></p>
+                        <p>Зарплата: <span th:text="${i.job.salary}"></span></p>
+                        <p>Баллов: <span th:text="${i.user.score.summary}"></span></p>
+                        <p>Статус заявки: <span th:text="${i.status.name}"></span></p>
+                        <a th:unless="${i.user.resume.isEmpty()}" th:href="'/img/' + ${i.user.resume}"
+                           class="btn btn-info w-100 mb-3" target="_blank">Резюме</a>
+                        <a th:href="'/humans/' + ${i.user.id}"
+                           class="btn btn-info w-100 mb-3" target="_blank">Профиль</a>
+                        <div th:if="${i.status.name() == 'WAITING'}">
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <a th:href="'/vacancy/under_consideration/' + ${i.id}"
+                                       class="btn btn-primary w-100">Одобрить</a>
+                                </div>
+                                <div class="col-12" align="center">
+                                    <a th:href="'/vacancy/rejected/' + ${i.id}"
+                                       class="btn btn-danger w-100">Отклонить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

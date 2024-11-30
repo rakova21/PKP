@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Аттестация</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Аттестация</h2>
+            </div>
+            <div class="content rounded-3" style="padding: 20px">
+                <a th:href="${'/humans/' + human.id}" class="btn btn-primary w-25">Назад</a>
+                <hr>
+                <p class="lead text-center" th:text="${'Суммарный балл: ' + human.certification.score}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    1. Что означает аббревиатура "API"?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score1 + ' | Ответ: ' + human.certification.answer1}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    2. Какой протокол используется для отправки электронной почты? (Аббревиатура)
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score2 + ' | Ответ: ' + human.certification.answer2}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    3. Что означает аббревиатура "HTML"?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score3 + ' | Ответ: ' + human.certification.answer3}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    4. Какой термин используется для обозначения процесса превращения исходного кода в исполняемый?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score4 + ' | Ответ: ' + human.certification.answer4}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    5. Какой термин используется для обозначения технологии, позволяющей запускать виртуальные
+                    компьютеры на одном физическом сервере?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score5 + ' | Ответ: ' + human.certification.answer5}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    6. Что означает аббревиатура "SQL"?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score6 + ' | Ответ: ' + human.certification.answer6}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    7. Как называется методология разработки программного обеспечения, основанная на коротких
+                    разработочных циклах и постоянной обратной связи?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score7 + ' | Ответ: ' + human.certification.answer7}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    8. Какой термин используется для обозначения процесса проверки и исправления ошибок в
+                    программном обеспечении?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score8 + ' | Ответ: ' + human.certification.answer8}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    9. Что означает аббревиатура "URL"?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score9 + ' | Ответ: ' + human.certification.answer9}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    100. Какой термин используется для обозначения способа хранения и передачи данных в виде
+                    двоичного кода?
+                </p>
+                <p class="lead" align="justify" th:text="${'Балл: ' + human.certification.score10 + ' | Ответ: ' + human.certification.answer10}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    11. Считаете ли вы, что обстановка на рабочем месте улучшилась за последний год?
+                </p>
+                <p th:if="${human.certification.answer11}" class="lead" align="justify" th:text="${'Балл: ' + human.certification.score11 + ' | Ответ: Да'}"></p>
+                <p th:unless="${human.certification.answer11}" class="lead" align="justify" th:text="${'Балл: ' + human.certification.score11 + ' | Ответ: Нет'}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    12. Если у вас есть какие-либо опасения, проблемы или предложения, пожалуйста, опишите их ниже.
+                </p>
+                <p th:if="${human.certification.answer12}" class="lead" align="justify" th:text="${'Балл: ' + human.certification.score12 + ' | Ответ: Да'}"></p>
+                <p th:unless="${human.certification.answer12}" class="lead" align="justify" th:text="${'Балл: ' + human.certification.score12 + ' | Ответ: Нет'}"></p>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

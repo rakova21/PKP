@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Аттестация</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Аттестация</h2>
+            </div>
+            <div class="content rounded-3" style="padding: 20px">
+                <form action="/certification" method="post">
+                    <p class="lead" align="justify">
+                        1. Что означает аббревиатура "API"?
+                    </p>
+                    <input type="text" required class="form-control" name="answer1">
+                    <hr>
+                    <p class="lead" align="justify">
+                        2. Какой протокол используется для отправки электронной почты? (Аббревиатура)
+                    </p>
+                    <input type="text" required class="form-control" name="answer2">
+                    <hr>
+                    <p class="lead" align="justify">
+                        3. Что означает аббревиатура "HTML"?
+                    </p>
+                    <input type="text" required class="form-control" name="answer3">
+                    <hr>
+                    <p class="lead" align="justify">
+                        4. Какой термин используется для обозначения процесса превращения исходного кода в исполняемый?
+                    </p>
+                    <input type="text" required class="form-control" name="answer4">
+                    <hr>
+                    <p class="lead" align="justify">
+                        5. Какой термин используется для обозначения технологии, позволяющей запускать виртуальные
+                        компьютеры на одном физическом сервере?
+                    </p>
+                    <input type="text" required class="form-control" name="answer5">
+                    <hr>
+                    <p class="lead" align="justify">
+                        6. Что означает аббревиатура "SQL"?
+                    </p>
+                    <input type="text" required class="form-control" name="answer6">
+                    <hr>
+                    <p class="lead" align="justify">
+                        7. Как называется методология разработки программного обеспечения, основанная на коротких
+                        разработочных циклах и постоянной обратной связи?
+                    </p>
+                    <input type="text" required class="form-control" name="answer7">
+                    <hr>
+                    <p class="lead" align="justify">
+                        8. Какой термин используется для обозначения процесса проверки и исправления ошибок в
+                        программном обеспечении?
+                    </p>
+                    <input type="text" required class="form-control" name="answer8">
+                    <hr>
+                    <p class="lead" align="justify">
+                        9. Что означает аббревиатура "URL"?
+                    </p>
+                    <input type="text" required class="form-control" name="answer9">
+                    <hr>
+                    <p class="lead" align="justify">
+                        10. Какой термин используется для обозначения способа хранения и передачи данных в виде
+                        двоичного кода?
+                    </p>
+                    <input type="text" required class="form-control" name="answer10">
+                    <hr>
+                    <p class="lead" align="justify">
+                        11. Scrum, Kanban, Lean - гибкие методологии?
+                    </p>
+                    <select name="answer11" class="form-select" required>
+                        <option value="true">Да</option>
+                        <option value="false">Нет</option>
+                    </select>
+                    <hr>
+                    <p class="lead" align="justify">
+                        12. Водопадная модель, каскадная модель - гибкие методологии?
+                    </p>
+                    <select name="answer12" class="form-select" required>
+                        <option value="true">Да</option>
+                        <option value="false">Нет</option>
+                    </select>
+                    <hr>
+                    <div class="text-center">
+                        <button class="btn btn-primary w-25" type="submit">Закончить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Опрос</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Опрос</h2>
+            </div>
+            <div class="content rounded-3" style="padding: 20px">
+                <a th:href="${'/humans/' + human.id}" class="btn btn-primary w-25">Назад</a>
+                <hr>
+                <p class="lead" align="justify">
+                    1. На сколько от 1 до 10 вы согласны с утверждением: "В моей команде царит дружелюбная и
+                    поддерживающая обстановка"?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer1}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    2. Как бы вы оценили по шкале от 1 до 10 уровень коммуникации и взаимодействия в вашей команде?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer2}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    3. Считаете ли вы, что ваше мнение уважается и принимается во внимание в рабочей среде?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer3}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    4. Как часто вы получаете конструктивную обратную связь от своих коллег или руководителя?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer4}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    5. Считаете ли вы, что компания обеспечивает достаточные возможности для профессионального роста
+                    и развития? Оцените по шкале от 0 до 10
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer5}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    6. Как бы вы оценили уровень (от 1 до 10) поддержки и помощи, которую вы получаете от своих
+                    коллег и руководителя?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer6}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    7. Чувствуете ли вы, что у вас достаточно свободы и гибкости в выполнении своих задач?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer7}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    8. Как бы вы оценили уровень (от 1 до 10) управления проектами и распределения задач в вашей
+                    команде?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer8}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    9. Считаете ли вы, что компания создает условия для достижения баланса между работой и личной
+                    жизнью?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer9}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    10. Чувствуете ли вы, что ваши достижения и вклад в работу признаются и ценятся?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer10}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    11. Считаете ли вы, что обстановка на рабочем месте улучшилась за последний год?
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer11}"></p>
+                <hr>
+                <p class="lead" align="justify">
+                    12. Если у вас есть какие-либо опасения, проблемы или предложения, пожалуйста, опишите их ниже.
+                </p>
+                <p class="lead" align="justify" th:text="${'Ответ: ' + human.question.answer12}"></p>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

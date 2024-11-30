@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Редактировать</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+<div th:insert="blocks/nav :: nav"></div>
+<main class="page product-page">
+    <section class="clean-block clean-product">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Редактировать</h2>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-6">
+                    <div th:if="${message}" class="alert alert-warning text-center" role="alert">
+                        <strong th:text="${message}"></strong>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="block-content">
+                <form action="/profile/edit/" method="post" enctype="multipart/form-data">
+                    <div class="row" style="margin-bottom: 5px;">
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Фамилия</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="surname"
+                                           th:value="${human.primarys.surname}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Имя</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="name"
+                                           th:value="${human.primarys.name}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Отчество</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="patronymic"
+                                           th:value="${human.primarys.patronymic}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Серия паспорта (AA)</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="passport"
+                                           th:value="${human.primarys.passport}" pattern="[A-Z]{2,2}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Номер паспорта (1231212)</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="passport_number"
+                                           th:value="${human.primarys.passport_number}" pattern="\d{7,7}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Дата рождения</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="date" required name="date"
+                                           th:value="${human.secondary.date}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Кем выдан паспорт</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="issued"
+                                           th:value="${human.secondary.issued}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Дата выдачи паспорта</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="date" required name="issued_date"
+                                           th:value="${human.secondary.issued_date}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Идентификационный номер</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="identity"
+                                           th:value="${human.secondary.identity}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Адрес</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="address"
+                                           th:value="${human.secondary.address}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Мобильный телефон (123121231212)</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="tel" required name="tel_mob" pattern="\d{12,12}"
+                                           th:value="${human.secondary.tel_mob}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Домашний телефон</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="tel" required name="tel_home"
+                                           th:value="${human.secondary.tel_home}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Электронная почта</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="email" required name="email"
+                                           th:value="${human.secondary.email}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Место работы</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="job"
+                                           th:value="${human.secondary.job}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Должность</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="text" required name="post"
+                                           th:value="${human.secondary.post}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Ежемесячный доход</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="number" step="1" min="0" required name="income"
+                                           th:value="${human.secondary.income}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Стаж</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="number" step="1" min="0" required name="experience"
+                                           th:value="${human.secondary.experience}"></div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Семейное положение</p>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" name="marital" required>
+                                        <option th:each="i : ${maritals}" th:value="${i}" th:label="${i.name}"
+                                                th:selected="${i == human.tertiary.marital}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Место рождения</p>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" name="origin" required>
+                                        <option th:each="i : ${origins}" th:value="${i}" th:label="${i.name}"
+                                                th:selected="${i == human.tertiary.origin}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Гражданство</p>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" name="citizenship" required>
+                                        <option th:each="i : ${citizenships}" th:value="${i}" th:label="${i.name}"
+                                                th:selected="${i == human.tertiary.citizenship}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Образование</p>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" name="education" required>
+                                        <option th:each="i : ${educations}" th:value="${i}" th:label="${i.name}"
+                                                th:selected="${i == human.tertiary.education}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>Фотография</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="file" accept="imaage/*" name="photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-primary" type="submit" style="margin-right: 15px;">Обновить</button>
+                            <button class="btn btn-secondary" type="reset">Очистить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+</body>
+
+</html>
